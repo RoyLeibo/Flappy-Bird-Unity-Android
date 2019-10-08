@@ -25,7 +25,7 @@ public class Player : MonoBehaviour
             animator.SetTrigger("Fly");
         }
     }
-    private void OnCollisionEnter2D() {
+    private void OnCollisionEnter2D(Collision2D other) {
         isDead = true;
         rb2d.velocity = Vector2.zero;
         animator.SetTrigger("Die");

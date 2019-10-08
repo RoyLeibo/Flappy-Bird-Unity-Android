@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class ColumnPool : MonoBehaviour
 {
-    public float spawnRate = 4f;
+    public float spawnRate = 5f;
     public int poolSize = 5;
     public float columnYMin = -1.1f;
     public float columnYMax = 0.9f;
 
     private float timeSinceLastSpawn = 0;
-    private float spawnXPos = 10f;
+    private float spawnXPos = 7f;
     private int currentColumn = 0;
     public GameObject columnsPrefab;
     private GameObject[] columns;
