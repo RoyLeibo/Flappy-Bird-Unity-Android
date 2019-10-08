@@ -31,7 +31,6 @@ public class ColumnPool : MonoBehaviour
         if(!GameControl.Instance.isGameOver && timeSinceLastSpawn >= spawnRate){
             timeSinceLastSpawn = 0;
             float spawnYPos = Random.Range(columnYMin,columnYMax);
-            Debug.Log(spawnYPos);
             columns[currentColumn].transform.position = new Vector2(spawnXPos,spawnYPos);
             currentColumn++;
             if(currentColumn>=poolSize){currentColumn = 0;}
