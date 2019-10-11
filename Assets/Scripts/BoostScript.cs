@@ -50,4 +50,5 @@ public class BoostScript : MonoBehaviour
             //destroy after coroutine is finished.
             Destroy(gameObject);
     }
+    //respawn boost in different locations.
 }
