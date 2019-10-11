@@ -6,16 +6,27 @@ public class GamePlayAudioScript : MonoBehaviour
 {
     public AudioSource MusicSource;
     public AudioClip MusicClip;
-    // Start is called before the first frame update
+    
     void Start()
     {
         MusicSource.clip = MusicClip;
+    }
+    
+    private void Awake()
+    {
+        DontDestroyOnLoad(transform.gameObject);
+        MusicSource = GetComponent<AudioSource>();
+    }
+
+    public void PlayMusic()
+    {
+        Debug.Log("Inside playMusic");
+        if (MusicSource.isPlaying) return;
         MusicSource.Play();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void StopMusic()
     {
-        
+        MusicSource.Stop();
     }
 }
