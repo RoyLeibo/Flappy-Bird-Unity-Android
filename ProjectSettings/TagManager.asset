@@ -3,7 +3,8 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Audio
   layers:
   - Default
   - TransparentFX
@@ -42,14 +43,14 @@ TagManager:
     uniqueID: 0
     locked: 0
   - name: Background
-    uniqueID: 2993475669
+    uniqueID: 4246658995
     locked: 0
   - name: Midground
-    uniqueID: 3890749009
+    uniqueID: 1662160967
     locked: 0
   - name: Foreground
-    uniqueID: 680251121
+    uniqueID: 607670877
     locked: 0
   - name: UI
-    uniqueID: 1139597375
+    uniqueID: 3921745541
     locked: 0
