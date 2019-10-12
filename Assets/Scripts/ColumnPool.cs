@@ -5,13 +5,13 @@ using UnityEngine;
 public class ColumnPool : MonoBehaviour
 {
     
-    public float spawnRate = 5f;
+    public float spawnRate = 4f;
     public int poolSize = 5;
     public float columnYMin = -1.1f;
     public float columnYMax = 0.9f;
 
     private float timeSinceLastSpawn = 0;
-    private float spawnXPos = 7f;
+    private float spawnXPos = 10f;
     private int currentColumn = 0;
     public GameObject columnsPrefab;
     private GameObject[] columns;
@@ -19,6 +19,7 @@ public class ColumnPool : MonoBehaviour
     
     void Start()
     {
+        //create the pool
         columns = new GameObject[poolSize];
         for(int i=0;i<poolSize;i++){
             columns[i] = (GameObject)Instantiate(columnsPrefab,objPoolPos,Quaternion.identity);
@@ -28,6 +29,7 @@ public class ColumnPool : MonoBehaviour
     
     void Update()
     {
+        //if game isn't over,when spawnRate time passed, spawn new element.
         timeSinceLastSpawn += Time.deltaTime;
         if(!GameControl.Instance.isGameOver && timeSinceLastSpawn >= spawnRate){
             timeSinceLastSpawn = 0;

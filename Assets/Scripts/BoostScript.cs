@@ -4,12 +4,17 @@ using UnityEngine;
 
 public class BoostScript : MonoBehaviour
 {
-    private float miniSubtractBy = 0.2f;
-    private float effectTime = 5f;
-    
+    private float minFactorX = 0.2f;
+    private float minFactorY = 0.2f;
+    private Vector2 originalSize = new Vector2(0.7f,0.7f);
+    private Vector2 newSizeAfterMin;
+    private float effectTime = 6f;
+    public bool isTriggered = false;
+    private bool firstTrigger = true;
     // Start is called before the first frame update
     void Start()
     {
+        newSizeAfterMin = originalSize - new Vector2(minFactorX,minFactorY);
     }
 
     // Update is called once per frame
@@ -18,37 +23,45 @@ public class BoostScript : MonoBehaviour
         
     }
     private void OnTriggerEnter2D(Collider2D other) {
+        
         if(GameControl.Instance.isGameOver){
             return;
         }
         if(other.tag == "Player"){
-            if(gameObject.name == "Coin"){
-                GameControl.Instance.Score();
-
-                //destroy after score is up.
-                Destroy(gameObject);
-            }else if(gameObject.name == "Mini"){
-                //minimize the character then wait and resize.
-                StartCoroutine(Minimize(other));
-                //TODO: fix the repositioning and respawning.
-                gameObject.transform.position += new Vector3(-15f,-25f,0);
+            
+            if(gameObject.tag == "Coin"){
+                //if the object is already triggered don't trigger it again.
+                if(!isTriggered){
+                    isTriggered = true;
+                    GameControl.Instance.Score();
+                }
+                
+            }else if(gameObject.tag =="Mini"){
+                //if the object is already triggered don't trigger it again.
+                if(!isTriggered){
+                    isTriggered = true;
+                    //minimize the character then wait and resize.
+                    StartCoroutine(Minimize(other));
+                }
             }
+            //hide after contact.
+            GetComponent<Renderer>().enabled = false;
         }
-        
     }
     private IEnumerator Minimize(Collider2D other){
-        
-            //reduce size.
-            other.transform.localScale -= new Vector3(miniSubtractBy,miniSubtractBy,0);
+        if(firstTrigger && other.transform.localScale.magnitude != originalSize.magnitude){
+            firstTrigger = false;
+            originalSize = other.transform.localScale;
+            minFactorX = originalSize.x/3.5f;
+            minFactorY = originalSize.y/3.5f;
+            newSizeAfterMin = originalSize - new Vector2(minFactorX,minFactorY);
+        }
+        //reduce size.
+        other.transform.localScale = newSizeAfterMin;
 
-            //wait effect time seconds.
-            //TODO: fix this effect!
-            yield return new WaitForSeconds(effectTime);
-            //resize to normal.
-
-            other.transform.localScale += new Vector3(miniSubtractBy,miniSubtractBy,0);
-            //destroy after coroutine is finished.
-            Destroy(gameObject);
+        //wait effect time seconds.
+        yield return new WaitForSeconds(effectTime);
+        //resize to normal.
+        other.transform.localScale = originalSize;
     }
-    //respawn boost in different locations.
 }
