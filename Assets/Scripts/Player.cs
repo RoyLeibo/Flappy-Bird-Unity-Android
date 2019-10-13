@@ -31,4 +31,8 @@ public class Player : MonoBehaviour
         animator.SetTrigger("Die");
         GameControl.Instance.Die();
     }
+    //activate when shooting key pressed.
+    private void OnShoot(){
+        //TODO: make the fireball appear with certain shootRate.
+    }
 }
