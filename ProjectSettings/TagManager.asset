@@ -9,6 +9,7 @@ TagManager:
   - Mini
   - FireBall
   - Column
+  - Enemy
   layers:
   - Default
   - TransparentFX
