@@ -38,7 +38,7 @@ public class BoostPool : MonoBehaviour
             float r = Random.Range(1.5f,4.5f); // the addition so that the boost wouldn't collide the columns.
             boostsPool[currentBoost].transform.position = new Vector2(spawnXPos + r,spawnYPos);
             //make trigger and visibility enabled again.
-            boostsPool[currentBoost].GetComponent<BoostScript>().isTriggered = false;
+            boostsPool[currentBoost].GetComponent<Collider2D>().enabled = true;
             boostsPool[currentBoost].GetComponent<Renderer>().enabled = true;
             currentBoost++;
             currentSpawn = rand.Next(0,spawnRates.Length);

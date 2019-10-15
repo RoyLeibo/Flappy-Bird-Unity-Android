@@ -15,6 +15,8 @@ public class ColumnPool : MonoBehaviour
     private int currentColumn = 0;
     public GameObject columnsPrefab;
     private GameObject[] columns;
+    private GameObject firstColumn;
+    private bool isFirstColumnDestroyed = false;
     private Vector2 objPoolPos = new Vector2(-15f,-25f);
     
     void Start()
@@ -24,6 +26,7 @@ public class ColumnPool : MonoBehaviour
         for(int i=0;i<poolSize;i++){
             columns[i] = (GameObject)Instantiate(columnsPrefab,objPoolPos,Quaternion.identity);
         }
+        firstColumn = (GameObject)Instantiate(columnsPrefab,new Vector2(spawnXPos,0),Quaternion.identity);
     }
 
     
@@ -36,7 +39,14 @@ public class ColumnPool : MonoBehaviour
             float spawnYPos = Random.Range(columnYMin,columnYMax);
             columns[currentColumn].transform.position = new Vector2(spawnXPos,spawnYPos);
             currentColumn++;
-            if(currentColumn>=poolSize){currentColumn = 0;}
+            if(currentColumn>=poolSize){
+                currentColumn = 0;
+                //if not destroyed, destroy the first column.
+                if(!isFirstColumnDestroyed){
+                    Destroy(firstColumn);
+                    isFirstColumnDestroyed = true;
+                }
+            }
         }
     }
 }
