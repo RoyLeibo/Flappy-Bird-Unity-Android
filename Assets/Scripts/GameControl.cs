@@ -24,6 +24,7 @@ public class GameControl : MonoBehaviour
         }else if(Instance!=this){
             Destroy(gameObject);
         }
+        Time.timeScale = 1;
     }
 
     // Update is called once per frame

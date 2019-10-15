@@ -19,7 +19,7 @@ public class Player : MonoBehaviour
     void Update()
     {
         if(isDead) return;
-        if(Input.GetMouseButtonDown(0)){
+        if(Input.GetMouseButtonDown(0) && !PauseMenu.GameIsPaused){
             rb2d.velocity = Vector2.zero;
             rb2d.AddForce(new Vector2(0,upForce));
             animator.SetTrigger("Fly");

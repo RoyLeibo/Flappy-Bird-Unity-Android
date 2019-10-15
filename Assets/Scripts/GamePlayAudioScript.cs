@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class GamePlayAudioScript : MonoBehaviour
 {
+    public static GamePlayAudioScript gamePlayAudioScript { get; private set; }
+
     public AudioSource MusicSource;
     public AudioClip MusicClip;
     
@@ -14,13 +16,16 @@ public class GamePlayAudioScript : MonoBehaviour
     
     private void Awake()
     {
+        if (gamePlayAudioScript == null)
+        {
+            gamePlayAudioScript = this;
+        }
         DontDestroyOnLoad(transform.gameObject);
         MusicSource = GetComponent<AudioSource>();
     }
 
     public void PlayMusic()
     {
-        Debug.Log("Inside playMusic");
         if (MusicSource.isPlaying) return;
         MusicSource.Play();
     }
