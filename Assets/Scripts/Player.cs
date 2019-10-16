@@ -24,7 +24,8 @@ public class Player : MonoBehaviour
     void Update()
     {
         timeSinceLastShot += Time.deltaTime;
-        if(GameControl.Instance.isGameOver || isDead) return;
+        if(GameControl.Instance.isGameOver || isDead || PauseMenu.GameIsPaused) return;
+        
         if(gameObject.name.StartsWith("Player1")){
             if(Input.GetKeyDown(KeyCode.UpArrow)){
                 rb2d.velocity = Vector2.zero;
@@ -43,7 +44,9 @@ public class Player : MonoBehaviour
             if(Input.GetKeyDown(KeyCode.D)){
                 OnShoot();
             }
+        
         }
+        
         
         
     }
