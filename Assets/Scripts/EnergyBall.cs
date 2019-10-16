@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FireBall : MonoBehaviour
+public class EnergyBall : MonoBehaviour
 {
-    private float fireBallSpeed = 0;
+    private float energyBallSpeed = 0;
     private bool appear = true;
     private float lifespan = 1.3f;
     private float timeAlive = 0;
@@ -14,9 +14,9 @@ public class FireBall : MonoBehaviour
     {
         rigidBody2D = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
-        //initialize fireBallSpeed
-        fireBallSpeed = -5f * GameControl.Instance.scrollSpeed;
-        rigidBody2D.velocity = new Vector2(fireBallSpeed,0);
+        //initialize energyBallSpeed
+        energyBallSpeed = -5f * GameControl.Instance.scrollSpeed;
+        rigidBody2D.velocity = new Vector2(energyBallSpeed,0);
     }
 
     

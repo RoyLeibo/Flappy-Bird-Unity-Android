@@ -7,9 +7,10 @@ TagManager:
   - Audio
   - Coin
   - Mini
-  - FireBall
   - Column
   - Enemy
+  - Bullet
+  - EnergyBall
   layers:
   - Default
   - TransparentFX
