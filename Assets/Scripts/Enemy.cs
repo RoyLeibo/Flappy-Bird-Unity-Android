@@ -11,7 +11,7 @@ public class Enemy : MonoBehaviour
     private float currentMoveTime = 0;
     public bool isDead = false;
     private float maxYPos =2.5f;
-    private float minYPos = -2f; 
+    private float minYPos = -2.1f; 
     void Start()
     {
         rb2d = GetComponent<Rigidbody2D>();
@@ -26,9 +26,6 @@ public class Enemy : MonoBehaviour
         }
         currentMoveTime += Time.deltaTime;
         if(!isDead){
-            if(transform.position.y >= maxYPos || transform.position.y <= minYPos){
-                force = -force;
-            }
             if(currentMoveTime>=moveRate){
                 currentMoveTime = 0;
                 AddForce();
@@ -46,6 +43,9 @@ public class Enemy : MonoBehaviour
         }
     }
     private void AddForce(){
+        if(transform.position.y >= maxYPos || transform.position.y <= minYPos){
+            force = -force;
+        }
         transform.position += force;
     }
 }
