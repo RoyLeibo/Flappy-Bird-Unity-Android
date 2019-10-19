@@ -9,7 +9,7 @@ public class Player : MonoBehaviour
     public float shootRate = 2f;
     public float xFB = 1.35f;
     public float yFB = -0.4f;
-    public GameObject fireball;
+    public GameObject energyball;
     private float timeSinceLastShot = 0;
     private Rigidbody2D rb2d;
     private Animator animator;
@@ -25,15 +25,31 @@ public class Player : MonoBehaviour
     void Update()
     {
         timeSinceLastShot += Time.deltaTime;
-        if(isDead) return;
-        if(Input.GetMouseButtonDown(0) && !PauseMenu.GameIsPaused){
-            rb2d.velocity = Vector2.zero;
-            rb2d.AddForce(new Vector2(0,upForce));
-            animator.SetTrigger("Fly");
+        if(GameControl.Instance.isGameOver || isDead || PauseMenu.GameIsPaused) return;
+        
+        if(gameObject.name.StartsWith("Player1")){
+            if(Input.GetKeyDown(KeyCode.UpArrow)){
+                rb2d.velocity = Vector2.zero;
+                rb2d.AddForce(new Vector2(0,upForce));
+                animator.SetTrigger("Fly");
+            }
+            if(Input.GetKeyDown(KeyCode.RightArrow)){
+                OnShoot();
+            }
+        }else if(gameObject.name.StartsWith("Player2")){
+            if(Input.GetKeyDown(KeyCode.W)){
+                rb2d.velocity = Vector2.zero;
+                rb2d.AddForce(new Vector2(0,upForce));
+                animator.SetTrigger("Fly");
+            }
+            if(Input.GetKeyDown(KeyCode.D)){
+                OnShoot();
+            }
+        
         }
-        if(Input.GetKeyDown(KeyCode.Space)){
-            OnShoot();
-        }
+        
+        
+        
     }
     private void OnCollisionEnter2D(Collision2D other) {
         isDead = true;
@@ -43,12 +59,12 @@ public class Player : MonoBehaviour
     }
     //activate when shooting key pressed.
     private void OnShoot(){
-        //TODO: make the fireball appear with certain shootRate.
+        //make the energyball appear with certain shootRate.
         if(!GameControl.Instance.isGameOver && timeSinceLastShot >= shootRate){
             audioSource.Play();
             timeSinceLastShot = 0;
             Vector3 addPos = new Vector3(xFB,yFB,0) + gameObject.transform.position;
-            Instantiate(fireball,addPos,Quaternion.identity);
+            Instantiate(energyball,addPos,Quaternion.identity);
         }
     }
 }
