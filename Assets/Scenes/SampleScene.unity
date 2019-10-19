@@ -1260,7 +1260,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnRate: 4
-  poolSize: 5
+  poolSize: 2
   columnYMin: -1.1
   columnYMax: 0.9
   columnsPrefab: {fileID: 2767928565346870566, guid: de9f3abfe10b8424da557131bd60665a,

@@ -25,13 +25,19 @@ public class ColumnPool : MonoBehaviour
     {
         //create the pool
         columns1 = new GameObject[poolSize];
-        columns2 = new GameObject[poolSize];
         for (int i=0;i<poolSize;i++){
             columns1[i] = (GameObject)Instantiate(columnsPrefab,objPoolPos,Quaternion.identity);
-            columns2[i] = (GameObject)Instantiate(columnsPrefab, objPoolPos, Quaternion.identity);
         }
         firstColumn1 = (GameObject)Instantiate(columnsPrefab,new Vector2(spawnXPos,0),Quaternion.identity);
-        firstColumn2 = (GameObject)Instantiate(columnsPrefab, new Vector2(spawnXPos, -16), Quaternion.identity);
+        if(!GameControl.isSingle)
+        {
+            columns2 = new GameObject[poolSize];
+            for (int i = 0; i < poolSize; i++)
+            {
+                columns2[i] = (GameObject)Instantiate(columnsPrefab, objPoolPos, Quaternion.identity);
+            }
+            firstColumn2 = (GameObject)Instantiate(columnsPrefab, new Vector2(spawnXPos, -16), Quaternion.identity);
+        }
     }
 
     
@@ -43,14 +49,20 @@ public class ColumnPool : MonoBehaviour
             timeSinceLastSpawn = 0;
             float spawnYPos = Random.Range(columnYMin,columnYMax);
             columns1[currentColumn].transform.position = new Vector2(spawnXPos,spawnYPos);
-            columns2[currentColumn].transform.position = new Vector2(spawnXPos, spawnYPos - 16);
+            if (!GameControl.isSingle)
+            {
+                columns2[currentColumn].transform.position = new Vector2(spawnXPos, spawnYPos - 16);
+            }
             currentColumn++;
             if(currentColumn>=poolSize){
                 currentColumn = 0;
                 //if not destroyed, destroy the first column.
                 if(!isFirstColumnDestroyed){
                     Destroy(firstColumn1);
-                    Destroy(firstColumn2);
+                    if (!GameControl.isSingle)
+                    {
+                        Destroy(firstColumn2);
+                    }
                     isFirstColumnDestroyed = true;
                 }
             }

@@ -12,16 +12,13 @@ public class AudioGamePlayScript : MonoBehaviour
 
     void Awake()
     {
-        Debug.Log("Before first condition");
         if (gamePlayAudioScript != null && gamePlayAudioScript != this)
         {
-            Debug.Log("inside first if");
             Destroy(this.gameObject);
             return;
         }
         else
         {
-            Debug.Log("inside else");
             gamePlayAudioScript = this;
         }
         DontDestroyOnLoad(this.gameObject);

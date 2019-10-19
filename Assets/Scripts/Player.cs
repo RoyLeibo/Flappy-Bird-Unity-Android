@@ -27,7 +27,7 @@ public class Player : MonoBehaviour
         timeSinceLastShot += Time.deltaTime;
         if(GameControl.Instance.isGameOver || isDead || PauseMenu.GameIsPaused) return;
         
-        if(gameObject.name.StartsWith("Player1")){
+        if(gameObject.name.StartsWith("Player2")){
             if(Input.GetKeyDown(KeyCode.UpArrow)){
                 rb2d.velocity = Vector2.zero;
                 rb2d.AddForce(new Vector2(0,upForce));
@@ -36,7 +36,7 @@ public class Player : MonoBehaviour
             if(Input.GetKeyDown(KeyCode.RightArrow)){
                 OnShoot();
             }
-        }else if(gameObject.name.StartsWith("Player2")){
+        }else if(gameObject.name.StartsWith("Player1")){
             if(Input.GetKeyDown(KeyCode.W)){
                 rb2d.velocity = Vector2.zero;
                 rb2d.AddForce(new Vector2(0,upForce));

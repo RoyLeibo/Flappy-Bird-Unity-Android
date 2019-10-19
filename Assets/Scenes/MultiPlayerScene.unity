@@ -747,7 +747,7 @@ MonoBehaviour:
   - 12
   - 16
   - 20
-  poolSize: 5
+  poolSize: 2
   enemy: {fileID: 6483756251359318455, guid: def1c83c78ea2dd42ad699d068a6ce55, type: 3}
 --- !u!114 &153401978
 MonoBehaviour:
