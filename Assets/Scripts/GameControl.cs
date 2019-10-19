@@ -17,6 +17,7 @@ public class GameControl : MonoBehaviour
     private bool fadeOut = true;
     private TimeSpan timeSpan = TimeSpan.FromSeconds(0.25);
     private DateTime startTime;
+    public AudioSource audioSource;
     // Start is called before the first frame update
     void Awake() {
         if(Instance == null){
@@ -79,5 +80,10 @@ public class GameControl : MonoBehaviour
         gameOverText.SetActive(true);
         clickForRestartText.SetActive(true);
         startTime = DateTime.UtcNow;
+    }
+
+    public void MonsterDead()
+    {
+        audioSource.Play();
     }
 }

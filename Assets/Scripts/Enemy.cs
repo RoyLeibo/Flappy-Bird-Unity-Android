@@ -40,6 +40,7 @@ public class Enemy : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other) {
         if(other.tag == "FireBall"){
             //"kill" the enemy
+            GameControl.Instance.MonsterDead();
             isDead = true;
             GetComponent<Renderer>().enabled = false;
             GetComponent<Collider2D>().enabled = false;

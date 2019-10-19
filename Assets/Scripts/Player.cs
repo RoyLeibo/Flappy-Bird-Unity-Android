@@ -13,6 +13,7 @@ public class Player : MonoBehaviour
     private float timeSinceLastShot = 0;
     private Rigidbody2D rb2d;
     private Animator animator;
+    public AudioSource audioSource;
     // Start is called before the first frame update
     void Start()
     {
@@ -44,6 +45,7 @@ public class Player : MonoBehaviour
     private void OnShoot(){
         //TODO: make the fireball appear with certain shootRate.
         if(!GameControl.Instance.isGameOver && timeSinceLastShot >= shootRate){
+            audioSource.Play();
             timeSinceLastShot = 0;
             Vector3 addPos = new Vector3(xFB,yFB,0) + gameObject.transform.position;
             Instantiate(fireball,addPos,Quaternion.identity);
