@@ -204,7 +204,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &239633988
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1279,8 +1279,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 400, y: 200}
+  m_AnchoredPosition: {x: 26.88, y: -10.56}
+  m_SizeDelta: {x: 650, y: 400}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1273708176
 MonoBehaviour:
@@ -1302,20 +1302,25 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 9f015f5eaf9ae4249883eea015d38558, type: 3}
-    m_FontSize: 40
+    m_FontSize: 20
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 4
+    m_MinSize: 0
     m_MaxSize: 40
-    m_Alignment: 4
+    m_Alignment: 3
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Welcome!
-
-    Your goal is to survive as much as you can!'
+  m_Text: "\u2022\tPress \u2018p\u2019 to pause the game.\r\n\u2022\tSingle player
+    buttons: Fly \u2013 Up arrow, Shot \u2013 Right arrow\r\n\u2022\tOn Multi player
+    Mode, the player who survive the most wins!\r\n\tButtons:\r\n\t\to\tPlayer 1 (left
+    screen): Fly \u2013 \u2018W\u2019, Shot \u2013 \u2018D\u2019\r\n\t\to\tPlayer
+    2 (right screen): Fly \u2013 Up arrow, Shot \u2013 Right arrow\r\n\u2022\tThere
+    are 2 kind of boosts:\r\n\t\to\tPoint boost \u2013 1 extra point\r\n\t\to\tMinimize
+    boost \u2013 minimize Charizard for 5 seconds\r\n\u2022\tWhen Zapdos appears,
+    you can avoid him or kill him by shot\r\n"
 --- !u!222 &1273708177
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1782,7 +1787,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1981416283
 RectTransform:
   m_ObjectHideFlags: 0
