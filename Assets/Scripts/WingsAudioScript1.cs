@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WingsAudioScript : MonoBehaviour
+public class WingsAudioScript1 : MonoBehaviour
 {
     public AudioClip MusicClip;
     public AudioSource MusicSource;
@@ -15,7 +15,7 @@ public class WingsAudioScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetMouseButtonDown(0) && !PauseMenu.GameIsPaused)
+        if (Input.GetKeyDown(KeyCode.UpArrow) && !PauseMenu.GameIsPaused)
         {
             MusicSource.Play();
         }

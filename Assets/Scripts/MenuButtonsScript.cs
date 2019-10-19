@@ -13,7 +13,7 @@ public class MenuButtonsScript : MonoBehaviour
 
     public void OnMultiPlayer()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(2);
     }
 
     public void OnExit()

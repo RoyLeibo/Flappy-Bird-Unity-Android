@@ -14,19 +14,24 @@ public class ColumnPool : MonoBehaviour
     private float spawnXPos = 10f;
     private int currentColumn = 0;
     public GameObject columnsPrefab;
-    private GameObject[] columns;
-    private GameObject firstColumn;
+    private GameObject[] columns1;
+    private GameObject[] columns2;
+    private GameObject firstColumn1;
+    private GameObject firstColumn2;
     private bool isFirstColumnDestroyed = false;
     private Vector2 objPoolPos = new Vector2(-15f,-25f);
     
     void Start()
     {
         //create the pool
-        columns = new GameObject[poolSize];
-        for(int i=0;i<poolSize;i++){
-            columns[i] = (GameObject)Instantiate(columnsPrefab,objPoolPos,Quaternion.identity);
+        columns1 = new GameObject[poolSize];
+        columns2 = new GameObject[poolSize];
+        for (int i=0;i<poolSize;i++){
+            columns1[i] = (GameObject)Instantiate(columnsPrefab,objPoolPos,Quaternion.identity);
+            columns2[i] = (GameObject)Instantiate(columnsPrefab, objPoolPos, Quaternion.identity);
         }
-        firstColumn = (GameObject)Instantiate(columnsPrefab,new Vector2(spawnXPos,0),Quaternion.identity);
+        firstColumn1 = (GameObject)Instantiate(columnsPrefab,new Vector2(spawnXPos,0),Quaternion.identity);
+        firstColumn2 = (GameObject)Instantiate(columnsPrefab, new Vector2(spawnXPos, -16), Quaternion.identity);
     }
 
     
@@ -37,13 +42,15 @@ public class ColumnPool : MonoBehaviour
         if(!GameControl.Instance.isGameOver && timeSinceLastSpawn >= spawnRate){
             timeSinceLastSpawn = 0;
             float spawnYPos = Random.Range(columnYMin,columnYMax);
-            columns[currentColumn].transform.position = new Vector2(spawnXPos,spawnYPos);
+            columns1[currentColumn].transform.position = new Vector2(spawnXPos,spawnYPos);
+            columns2[currentColumn].transform.position = new Vector2(spawnXPos, spawnYPos - 16);
             currentColumn++;
             if(currentColumn>=poolSize){
                 currentColumn = 0;
                 //if not destroyed, destroy the first column.
                 if(!isFirstColumnDestroyed){
-                    Destroy(firstColumn);
+                    Destroy(firstColumn1);
+                    Destroy(firstColumn2);
                     isFirstColumnDestroyed = true;
                 }
             }

@@ -55,8 +55,22 @@ public class Player : MonoBehaviour
         isDead = true;
         rb2d.velocity = Vector2.zero;
         animator.SetTrigger("Die");
-        GameControl.Instance.Die();
+        if (GameControl.isSingle)
+        {
+            GameControl.Instance.Die();
+        }
+        else
+        {
+            if (gameObject.name.StartsWith("Player1")) {
+                MultiGameControl.Instance.Die(2);
+            }
+            else
+            {
+                MultiGameControl.Instance.Die(1);
+            }
+        }
     }
+
     //activate when shooting key pressed.
     private void OnShoot(){
         //make the energyball appear with certain shootRate.

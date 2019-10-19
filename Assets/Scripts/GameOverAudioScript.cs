@@ -16,10 +16,21 @@ public class GameOverAudioScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(GameControl.Instance.isGameOver && !isPlayed)
+        if (GameControl.isSingle)
         {
-            isPlayed = true;
-            MusicSource.Play();
+            if (GameControl.Instance.isGameOver && !isPlayed)
+            {
+                isPlayed = true;
+                MusicSource.Play();
+            }
+        }
+        else
+        {
+            if(MultiGameControl.Instance.isGameOver && !isPlayed)
+            {
+                isPlayed = true;
+                MusicSource.Play();
+            }
         }
     }
 }

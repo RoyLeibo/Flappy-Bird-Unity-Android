@@ -15,8 +15,19 @@ public class ScrollingObject : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(GameControl.Instance.isGameOver){
-            rigidBody2D.velocity = Vector2.zero;
+        if (GameControl.isSingle)
+        {
+            if (GameControl.Instance.isGameOver)
+            {
+                rigidBody2D.velocity = Vector2.zero;
+            }
+        }
+        else
+        {
+            if(MultiGameControl.Instance.isGameOver)
+            {
+                rigidBody2D.velocity = Vector2.zero;
+            }
         }
     }
 }

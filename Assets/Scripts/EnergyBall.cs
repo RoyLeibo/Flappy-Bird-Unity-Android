@@ -32,7 +32,21 @@ public class EnergyBall : MonoBehaviour
             appear = false;
         }else if(other.tag == "Enemy"){
             appear = false;
-            GameControl.Instance.Score();
+            if (GameControl.isSingle)
+            {
+                GameControl.Instance.Score();
+            }
+            else
+            {
+                if (other.name.StartsWith("Player1"))
+                {
+                    MultiGameControl.Instance.Score1();
+                }
+                else
+                {
+                    MultiGameControl.Instance.Score2();
+                }
+            }
         }
     }
 }

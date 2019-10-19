@@ -36,8 +36,15 @@ public class Enemy : MonoBehaviour
     
     private void OnTriggerEnter2D(Collider2D other) {
         if(other.tag == "EnergyBall"){
-            //"kill" the enemy
-            GameControl.Instance.MonsterDead();
+            if (GameControl.isSingle)
+            {
+                //"kill" the enemy
+                GameControl.Instance.MonsterDead();
+            }
+            else
+            {
+                MultiGameControl.Instance.MonsterDead();
+            }
             isDead = true;
             GetComponent<Renderer>().enabled = false;
             GetComponent<Collider2D>().enabled = false;

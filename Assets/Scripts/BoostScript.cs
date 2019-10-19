@@ -23,8 +23,23 @@ public class BoostScript : MonoBehaviour
         if(other.tag == "Player"){
             if(gameObject.tag == "Coin"){
                 //update score.
-                GameControl.Instance.Score();
-            }else if(gameObject.tag =="Mini"){
+                if (GameControl.isSingle)
+                {
+                    GameControl.Instance.Score();
+                }
+                else
+                {
+                    if (other.name.StartsWith("Player1"))
+                    {
+                        MultiGameControl.Instance.Score1();
+                    }
+                    else
+                    {
+                        MultiGameControl.Instance.Score2();
+                    }
+                }
+            }
+            else if(gameObject.tag =="Mini"){
                 //minimize the character then wait and resize.
                 StartCoroutine(Minimize(other));
             }
