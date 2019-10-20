@@ -37,6 +37,7 @@ public class MultiGameControl : MonoBehaviour
             Destroy(gameObject);
         }
         Time.timeScale = 1;
+        GameControl.isSingle = false;
     }
 
     // Update is called once per frame
