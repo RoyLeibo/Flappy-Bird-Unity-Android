@@ -1314,9 +1314,9 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: "\u2022\tPress \u2018p\u2019 to pause the game.\r\n\u2022\tSingle player
-    buttons: Fly \u2013 \u2018W\u2019, Shoot \u2013 \u2018D\u2019\r\n\u2022\tOn Multi
-    player Mode, the player who survive the most wins!\r\n\tButtons:\r\n\t\to\tPlayer
-    1 (left screen): Fly \u2013 \u2018W\u2019, Shoot \u2013 \u2018D\u2019\r\n\t\to\tPlayer
+    buttons: Fly \u2013 Up arrow, Shoot \u2013 Right arrow\r\n\u2022\tOn Multi player
+    Mode, the player who survive the most wins!\r\n\tButtons:\r\n\t\to\tPlayer 1 (left
+    screen): Fly \u2013 \u2018W\u2019, Shoot \u2013 \u2018D\u2019\r\n\t\to\tPlayer
     2 (right screen): Fly \u2013 Up arrow, Shoot \u2013 Right arrow\r\n\u2022\tThere
     are 2 kind of boosts:\r\n\t\to\tPoint boost \u2013 1 extra point\r\n\t\to\tMinimize
     boost \u2013 minimize Charizard for 5 seconds\r\n\u2022\tWhen Zapdos appears,
