@@ -15,7 +15,7 @@ public class WingsAudioScript1 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.UpArrow) && !PauseMenu.GameIsPaused)
+        if (Input.GetKeyDown(KeyCode.UpArrow) && !PauseMenu.GameIsPaused && !GameControl.Instance.isGameOver)
         {
             MusicSource.Play();
         }

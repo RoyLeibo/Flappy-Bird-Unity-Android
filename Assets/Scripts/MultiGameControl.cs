@@ -108,6 +108,7 @@ public class MultiGameControl : MonoBehaviour
     {
         if (!isGameOver)
         {
+            GameControl.Instance.isGameOver = true;
             isGameOver = true;
             this.winner = winner;
             Text winnerText = gameOverText.GetComponent<Text>();

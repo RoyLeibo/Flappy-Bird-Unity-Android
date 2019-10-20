@@ -25,28 +25,45 @@ public class Player : MonoBehaviour
     void Update()
     {
         timeSinceLastShot += Time.deltaTime;
-        if(GameControl.Instance.isGameOver || isDead || PauseMenu.GameIsPaused) return;
-        
-        if(gameObject.name.StartsWith("Player2")){
-            if(Input.GetKeyDown(KeyCode.UpArrow)){
-                rb2d.velocity = Vector2.zero;
-                rb2d.AddForce(new Vector2(0,upForce));
-                animator.SetTrigger("Fly");
+        if(GameControl.Instance.isGameOver || isDead || PauseMenu.GameIsPaused){
+            if(GameControl.Instance.isGameOver && !isDead){
+                rb2d.constraints = RigidbodyConstraints2D.FreezePositionY;
             }
-            if(Input.GetKeyDown(KeyCode.RightArrow)){
-                OnShoot();
-            }
-        }else if(gameObject.name.StartsWith("Player1")){
-            if(Input.GetKeyDown(KeyCode.W)){
-                rb2d.velocity = Vector2.zero;
-                rb2d.AddForce(new Vector2(0,upForce));
-                animator.SetTrigger("Fly");
-            }
-            if(Input.GetKeyDown(KeyCode.D)){
-                OnShoot();
-            }
-        
+            return;
         }
+        if(GameControl.isSingle){
+            if(gameObject.name.StartsWith("Player1")){
+                if(Input.GetKeyDown(KeyCode.UpArrow)){
+                    rb2d.velocity = Vector2.zero;
+                    rb2d.AddForce(new Vector2(0,upForce));
+                    animator.SetTrigger("Fly");
+                }
+                if(Input.GetKeyDown(KeyCode.RightArrow)){
+                    OnShoot();
+                }
+            }
+        }else{
+            if(gameObject.name.StartsWith("Player2")){
+                if(Input.GetKeyDown(KeyCode.UpArrow)){
+                    rb2d.velocity = Vector2.zero;
+                    rb2d.AddForce(new Vector2(0,upForce));
+                    animator.SetTrigger("Fly");
+                }
+                if(Input.GetKeyDown(KeyCode.RightArrow)){
+                    OnShoot();
+                }
+            }else if(gameObject.name.StartsWith("Player1")){
+                if(Input.GetKeyDown(KeyCode.W)){
+                    rb2d.velocity = Vector2.zero;
+                    rb2d.AddForce(new Vector2(0,upForce));
+                    animator.SetTrigger("Fly");
+                }
+                if(Input.GetKeyDown(KeyCode.D)){
+                    OnShoot();
+                }
+            }
+        }
+        
         
         
         

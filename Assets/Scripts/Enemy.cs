@@ -51,7 +51,9 @@ public class Enemy : MonoBehaviour
         }
     }
     private void AddForce(){
-        if(transform.position.y >= maxYPos || transform.position.y <= minYPos){
+        var y = transform.position.y;
+        if(((y >= maxYPos || y <= minYPos) && y >-5) ||
+        ((y >= maxYPos-16 || y <= minYPos-16)&& y<-10)){
             force = -force;
         }
         transform.position += force;
