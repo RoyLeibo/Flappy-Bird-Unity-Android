@@ -10,6 +10,7 @@ public class EnergyBall : MonoBehaviour
     private float timeAlive = 0;
     private Animator animator;
     private Rigidbody2D rigidBody2D;
+    public GameObject shooter;
     void Start()
     {
         rigidBody2D = GetComponent<Rigidbody2D>();
@@ -38,11 +39,11 @@ public class EnergyBall : MonoBehaviour
             }
             else
             {
-                if (other.name.StartsWith("Player1"))
+                if (shooter.name.StartsWith("Player1"))
                 {
                     MultiGameControl.Instance.Score1();
                 }
-                else
+                else if (shooter.name.StartsWith("Player2"))
                 {
                     MultiGameControl.Instance.Score2();
                 }

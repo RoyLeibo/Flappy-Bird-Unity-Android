@@ -95,7 +95,8 @@ public class Player : MonoBehaviour
             audioSource.Play();
             timeSinceLastShot = 0;
             Vector3 addPos = new Vector3(xFB,yFB,0) + gameObject.transform.position;
-            Instantiate(energyball,addPos,Quaternion.identity);
+            GameObject EBI = (GameObject)Instantiate(energyball,addPos,Quaternion.identity);
+            EBI.GetComponent<EnergyBall>().shooter = gameObject;
         }
     }
 }
