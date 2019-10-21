@@ -20,6 +20,8 @@ public class MultiGameControl : MonoBehaviour
     private TimeSpan timeSpan = TimeSpan.FromSeconds(0.25);
     private DateTime startTime;
     public AudioSource audioSource;
+    public AudioSource coinAudioSource;
+    public AudioSource miniAudioSource;
     public int winner;
     // Start is called before the first frame update
     public void Start()

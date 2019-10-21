@@ -20,6 +20,8 @@ public class GameControl : MonoBehaviour
     private TimeSpan timeSpan = TimeSpan.FromSeconds(0.25);
     private DateTime startTime;
     public AudioSource audioSource;
+    public AudioSource coinAudioSource;
+    public AudioSource miniAudioSource;
     // Start is called before the first frame update
     public void Start()
     {
