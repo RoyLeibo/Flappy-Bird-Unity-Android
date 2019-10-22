@@ -14,6 +14,7 @@ public class Player : MonoBehaviour
     private Rigidbody2D rb2d;
     private Animator animator;
     public AudioSource audioSource;
+    public AudioSource wingsAudioSource;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,49 +26,46 @@ public class Player : MonoBehaviour
     void Update()
     {
         timeSinceLastShot += Time.deltaTime;
-        if(GameControl.Instance.isGameOver || isDead || PauseMenu.GameIsPaused){
-            if(GameControl.Instance.isGameOver && !isDead){
+        if (GameControl.Instance.isGameOver || isDead || PauseMenu.GameIsPaused) {
+            if (GameControl.Instance.isGameOver && !isDead) {
                 rb2d.constraints = RigidbodyConstraints2D.FreezePositionY;
             }
             return;
         }
-        if(GameControl.isSingle){
-            if(gameObject.name.StartsWith("Player1")){
-                if(Input.GetKeyDown(KeyCode.UpArrow)){
-                    rb2d.velocity = Vector2.zero;
-                    rb2d.AddForce(new Vector2(0,upForce));
-                    animator.SetTrigger("Fly");
-                }
-                if(Input.GetKeyDown(KeyCode.RightArrow)){
-                    OnShoot();
-                }
-            }
-        }else{
-            if(gameObject.name.StartsWith("Player2")){
-                if(Input.GetKeyDown(KeyCode.UpArrow)){
-                    rb2d.velocity = Vector2.zero;
-                    rb2d.AddForce(new Vector2(0,upForce));
-                    animator.SetTrigger("Fly");
-                }
-                if(Input.GetKeyDown(KeyCode.RightArrow)){
-                    OnShoot();
-                }
-            }else if(gameObject.name.StartsWith("Player1")){
-                if(Input.GetKeyDown(KeyCode.W)){
-                    rb2d.velocity = Vector2.zero;
-                    rb2d.AddForce(new Vector2(0,upForce));
-                    animator.SetTrigger("Fly");
-                }
-                if(Input.GetKeyDown(KeyCode.D)){
-                    OnShoot();
-                }
-            }
-        }
-        
-        
-        
-        
+        //if(GameControl.isSingle){
+        //    if(gameObject.name.StartsWith("Player1")){
+        //        if(Input.GetKeyDown(KeyCode.UpArrow)){
+        //            rb2d.velocity = Vector2.zero;
+        //            rb2d.AddForce(new Vector2(0,upForce));
+        //            animator.SetTrigger("Fly");
+        //        }
+        //        if(Input.GetKeyDown(KeyCode.RightArrow)){
+        //            OnShoot();
+        //        }
+        //    }
+        //}else{
+        //    if(gameObject.name.StartsWith("Player2")){
+        //        if(Input.GetKeyDown(KeyCode.UpArrow)){
+        //            rb2d.velocity = Vector2.zero;
+        //            rb2d.AddForce(new Vector2(0,upForce));
+        //            animator.SetTrigger("Fly");
+        //        }
+        //        if(Input.GetKeyDown(KeyCode.RightArrow)){
+        //            OnShoot();
+        //        }
+        //    }else if(gameObject.name.StartsWith("Player1")){
+        //        if(Input.GetKeyDown(KeyCode.W)){
+        //            rb2d.velocity = Vector2.zero;
+        //            rb2d.AddForce(new Vector2(0,upForce));
+        //            animator.SetTrigger("Fly");
+        //        }
+        //        if(Input.GetKeyDown(KeyCode.D)){
+        //            OnShoot();
+        //        }
+        //    }
+      
     }
+
     private void OnCollisionEnter2D(Collision2D other) {
         isDead = true;
         rb2d.velocity = Vector2.zero;
@@ -89,7 +87,7 @@ public class Player : MonoBehaviour
     }
 
     //activate when shooting key pressed.
-    private void OnShoot(){
+    public void OnShoot(){
         //make the energyball appear with certain shootRate.
         if(!GameControl.Instance.isGameOver && timeSinceLastShot >= shootRate){
             audioSource.Play();
@@ -98,5 +96,13 @@ public class Player : MonoBehaviour
             GameObject EBI = (GameObject)Instantiate(energyball,addPos,Quaternion.identity);
             EBI.GetComponent<EnergyBall>().shooter = gameObject;
         }
+    }
+
+    public void OnFly()
+    {
+        wingsAudioSource.Play();
+        rb2d.velocity = Vector2.zero;
+        rb2d.AddForce(new Vector2(0, upForce));
+        animator.SetTrigger("Fly");
     }
 }
