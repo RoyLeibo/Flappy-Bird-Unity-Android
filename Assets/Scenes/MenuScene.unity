@@ -1391,7 +1391,7 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: "\u2022\tPress        to pause the game.\r\n\u2022\tSingle player buttons:
-    Fly \u2013         , Shoot \u2013 \r\n\u2022\tThere are 2 kind of boosts:\r\n\n\t\to\t
+    Fly \u2013         , Shoot \u2013 \r\n\u2022\tThere are 2 kinds of boosts:\r\n\n\t\to\t
     \     \u2013 1 extra point\r\n\n\t\to\t      \u2013 minimize Charizard for 5 seconds\r\n\n\u2022\tWhen
     Zapdos appears, you can avoid him or kill him by shot\r\n"
 --- !u!222 &1273708177
@@ -2329,4 +2329,4 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2084814258}
-  m_CullTransparentMesh: 0
+  m_CullTransparentMesh: 1
